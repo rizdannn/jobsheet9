@@ -3,21 +3,31 @@ public class ArrayRataNilai22 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[] nilaiMhs = new int[10];
-        double total = 0;
-        double rata2;
+        System.out.print("Masukkan jumlah mahasiswa : ");
+        int jumlahMhs = sc.nextInt();
 
-        for (int i = 0; i < nilaiMhs.length; i++) {
+        int[] nilaiMhs = new int[jumlahMhs];
+
+        for (int i = 0; i < jumlahMhs; i++) {
             System.out.print("Masukkan nilai mahasiswa ke-" + (i + 1) + " : ");
             nilaiMhs[i] = sc.nextInt();
         }
 
-        for (int i = 0; i < nilaiMhs.length; i++) {
-            total += nilaiMhs[i];
+        double totalTidakLulus = 0;
+        int countTidakLulus = 0;
+
+        for (int i = 0; i < jumlahMhs; i++) {
+            if (nilaiMhs[i] < 85) {
+                totalTidakLulus += nilaiMhs[i];
+                countTidakLulus++;
+            }
         }
 
-        rata2 = total / nilaiMhs.length;
-        System.out.println("Rata-rata nilai = " + rata2);
+        double rataTidakLulus = countTidakLulus > 0 ? totalTidakLulus / countTidakLulus : 0;
 
+        System.out.println("Rata-rata nilai lulus = 85.0");
+        System.out.printf("Rata-rata nilai tidak lulus = %.1f\n", rataTidakLulus);
+
+        sc.close();
     }
 }
